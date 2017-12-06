@@ -8,18 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace NewCheese.Controllers
 {
-    public class CheeseController1 : Controller
+    public class CheeseController : Controller
     {
+        static private List<string> Cheeses = new List<string>();
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<string> cheeses = new List<string>();
-
-            cheeses.Add("Cheddar");
-            cheeses.Add("Provel");
-            cheeses.Add("Pepperjack");
-
-            ViewBag.cheeses = cheeses;
+            
+            ViewBag.cheeses = Cheeses;
 
             return View();
         }
@@ -27,6 +23,18 @@ namespace NewCheese.Controllers
         public IActionResult Add()
         {
             return View();
+        }
+
+        [HttpPost]
+        [Route("/Cheese/Add")] //specify where the form lives
+                                // our form has no action method,
+                                //so we need this here
+        public IActionResult NewCheese(string name)
+        {
+            //Add new cheese to my existing cheeses
+            Cheeses.Add(name);
+
+            return Redirect("/Cheese");
         }
     }
 }
