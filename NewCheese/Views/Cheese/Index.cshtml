@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+
+    
+}
+
+<h1>My Cheeses - Yum!</h1>
+
+<ul>
+    @foreach(string cheese in ViewBag.cheeses)
+    {
+        <li>@cheese</li>
+
+    }
+    
+
+</ul>
