@@ -1,6 +1,4 @@
 ﻿@{
-    Layout = null;
-
     
 }
 
@@ -12,12 +10,22 @@
     <p>No cheeses yet!</p>
 }
 
-<ul>
-    @foreach(string cheese in ViewBag.cheeses)
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+
+    @foreach(var cheese in ViewBag.cheeses)
     {
-        <li>@cheese</li>
+        <tr>
+          
+            <td>@cheese.Name</td>
+            <td>@cheese.Description</td>
 
+        </tr>
     }
-    
 
-</ul>
+</table>
+
+<p><a asp-controller="Cheese" asp-action="Remove">Remove Cheese</a></p>
